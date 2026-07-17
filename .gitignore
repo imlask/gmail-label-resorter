@@ -1,0 +1,23 @@
+# ctags / editor tag indexes
+tags
+tags.lock
+tags.temp
+TAGS
+
+# OS junk
+.DS_Store
+Thumbs.db
+desktop.ini
+
+# Editor / IDE state
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# Node tooling (if linting, tests, or clasp are ever added)
+node_modules/
+
+# clasp (Apps Script CLI) — local login credentials must never be committed
+.clasprc.json

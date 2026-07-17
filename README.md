@@ -63,6 +63,9 @@ After changing anything, run **`setup`** again — it replaces the old timer wit
 **Why isn't this a Chrome extension?**
 An extension can only restyle what Gmail displays — the sort order comes from Google's servers, so no client-side tool can fix it. Also, a published extension touching Gmail data requires Google's annual paid security assessment (CASA). A script you install in your own account needs none of that, and it works 24/7 even with the browser closed.
 
+**How do I know it's actually running?**
+Timer runs are completely silent — no notification, no email, nothing visible in Gmail. To see them, open your project at [script.google.com](https://script.google.com) and click the **Executions** icon (☰▶) in the left sidebar. Every run is listed there, including automatic ones, with a log line like *"Re-labeled 4 thread(s) across 12 label(s)"*. Note that Google schedules timers loosely: runs land *roughly* every 15 minutes at a randomized offset (e.g. :07, :22, :37), and the very first automatic run after setup can take up to ~30–45 minutes. If a run ever fails, the error appears in this list immediately.
+
 **Does it affect my inbox or other views?**
 No. It only adds labels the threads already carry. Your inbox, archive state, read/unread status, filters — all untouched.
 
@@ -70,7 +73,7 @@ No. It only adds labels the threads already carry. Your inbox, archive state, re
 Very unlikely. Free consumer accounts get generous daily Apps Script quotas, and the script uses one batched call per label per run, limited to recently active threads. With the defaults (every 15 min, 30-day lookback) even inboxes with dozens of labels stay far below the limits.
 
 **A new reply arrived and the thread didn't move up yet?**
-The script runs on a timer — with the default settings, wait up to 15 minutes. You can also open the project and run `relabelThreads` manually.
+The script runs on a timer — with the default settings, wait for the next run (see previous answer for the timing). You can also open the project and run `relabelThreads` manually for an instant fix.
 
 **I renamed a label and it stopped being processed.**
 If you listed labels explicitly in `LABELS`, update the name there and run `setup` again.
